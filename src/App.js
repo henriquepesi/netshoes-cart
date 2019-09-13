@@ -1,9 +1,13 @@
 import React from 'react';
+import GlobalStyle from './styles/global';
+
+import Header from './components/Header';
 
 function App() {
   return (
     <div className="App">
-      <h1>Netshoes cart</h1>
+      <GlobalStyle />
+      <Header />
     </div>
   );
 }
