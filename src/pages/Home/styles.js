@@ -5,6 +5,7 @@ export const ProductList = styled.ul`
   margin: 0 auto;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
+  padding-top: 80px;
   li {
     display: flex;
     align-items: flex-start;

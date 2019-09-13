@@ -2,7 +2,10 @@ import styled from 'styled-components';
 
 export const Container = styled.header`
   background: #5a2d82;
-  padding: 25px 20px;
+  padding: 20px;
+  position: fixed;
+  left: 0;
+  right: 0;
 
   > div {
     max-width: 1200px;

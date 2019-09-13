@@ -1,7 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { FiXCircle } from 'react-icons/fi';
 
-// import { Container } from './styles';
+import { CartSide, Close } from './styles';
 
 export default function Cart() {
-  return <div />;
+  const [cartIsClosed, setCartIsClosed] = useState(true);
+
+  function handleCart() {
+    setCartIsClosed(!cartIsClosed);
+  }
+
+  return (
+    <CartSide isClosed={cartIsClosed}>
+      <Close>
+        <FiXCircle onClick={handleCart} size="25" color="#5a2d82" />
+      </Close>
+    </CartSide>
+  );
 }
