@@ -14,11 +14,16 @@ export default createGlobalStyle`
     font: 14px 'Open Sans', sans-serif;
   }
 
+  ul {
+    list-style: none;
+  }
+
   #root {
     margin: 0 auto;
   }
 
   button {
     cursor: pointer;
+    border: none;
   }
 `;
