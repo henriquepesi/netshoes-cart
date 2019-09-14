@@ -6,13 +6,17 @@ import Header from './components/Header';
 import Cart from './components/Cart';
 import Home from './pages/Home';
 
+import store from './store';
+
 function App() {
   return (
     <div className="App">
-      <GlobalStyle />
-      <Header />
-      <Home />
-      <Cart />
+      <Provider store={store}>
+        <GlobalStyle />
+        <Header />
+        <Home />
+        <Cart />
+      </Provider>
     </div>
   );
 }
