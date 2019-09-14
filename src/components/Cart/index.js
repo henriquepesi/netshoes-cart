@@ -14,43 +14,61 @@ class Cart extends Component {
   };
 
   render() {
-    const { toggleCart, cart } = this.props;
+    const { toggleCart, cart, dispatch } = this.props;
     return (
       <CartSide isClosed={toggleCart}>
         <Close>
           <FiXCircle onClick={this.handleCart} size="25" color="#5a2d82" />
         </Close>
-        <CartList>
 
-          {cart.map(product => (
-             <li key={product.id}>
-             <img
-               src={product.image}
-               alt="Camiseta Corinthians"
-             />
-             <CartListInfo>
-               <div>
-                 <strong>{product.title}</strong>
-                 <span>g | modelo</span>
-                 <span>Quantidade</span>
-               </div>
-               <div>
-                 <FiTrash2 />
-                 <strong>R$ 229.9</strong>
-               </div>
-             </CartListInfo>
-           </li>
-          ))}
-        </CartList>
+        {!cart.length ? (
+          <p>carrinho vazio</p>
+        ) : (
+          <CartList>
+            {/* Teste */}
+            {cart.map(product => (
+              <li key={product.id}>
+                <img src={product.image} alt="Camiseta Corinthians" />
+                <CartListInfo>
+                  <div>
+                    <strong>{product.title}</strong>
+                    <span>g | modelo</span>
+                    <span>
+                      Quantidade:
+                      <input
+                        type="number"
+                        readOnly
+                        value={product.amount}
+                      />{' '}
+                    </span>
+                  </div>
+                  <div>
+                    <button
+                      type="button"
+                      onClick={() =>
+                        dispatch({ type: 'REMOVE_PRODUCT', id: product.id })
+                      }
+                    >
+                      <FiTrash2 />
+                    </button>
+                    <strong>R$ {product.totalProduct}</strong>
+                  </div>
+                </CartListInfo>
+              </li>
+            ))}
+          </CartList>
+        )}
       </CartSide>
     );
   }
 }
 
 const mapStateToProps = state => ({
-  cart: state.cart,
-  toggleCart: state.toggleCart
-
+  cart: state.cart.map(product => ({
+    ...product,
+    totalProduct: (product.price * product.amount).toFixed(2),
+  })),
+  toggleCart: state.toggleCart,
 });
 
 export default connect(mapStateToProps)(Cart);

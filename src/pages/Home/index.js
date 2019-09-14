@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
 import api from '../../services/api';
 
 import { ProductList, Value } from './styles';
@@ -20,9 +20,9 @@ class Home extends Component {
 
     dispatch({
       type: 'ADD_PRODUCT',
-      product
+      product,
     });
-  }
+  };
 
   render() {
     const { products } = this.state;
@@ -31,18 +31,19 @@ class Home extends Component {
       <ProductList>
         {products.map(product => (
           <li key={product.id}>
-            <img src={product.image}  alt={product.title}/>
+            <img src={product.image} alt={product.title} />
             <strong>{product.title}</strong>
-            <Value price>{
-              product.currencyFormat}
+            <Value price>
+              {product.currencyFormat}
               {product.price}
-              </Value>
+            </Value>
             <Value>3 x de {(product.price / 3).toFixed(2)}</Value>
             <button
               type="button"
-              onClick={() => this.handleAddProduct(product)}>
-                Comprar
-                </button>
+              onClick={() => this.handleAddProduct(product)}
+            >
+              Comprar
+            </button>
           </li>
         ))}
       </ProductList>
@@ -50,4 +51,4 @@ class Home extends Component {
   }
 }
 
-export default connect()(Home)
+export default connect()(Home);
