@@ -2,7 +2,6 @@ module.exports = {
   env: {
     browser: true,
     es6: true,
-    jest: true,
   },
   extends: ['airbnb', 'prettier', 'prettier/react'],
   globals: {
@@ -22,6 +21,7 @@ module.exports = {
     'prettier/prettier': 'error',
     'react/jsx-filename-extension': ['warn', { extensions: ['.jsx', '.js'] }],
     'import/prefer-default-export': 'off',
-    'react/state-in-constructor': 'off',
+    'no-param-reassing': 'off',
+    'no-console': ['error', { allow: ['tron'] }],
   },
 };

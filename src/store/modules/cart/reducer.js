@@ -1,8 +1,11 @@
-export default function cart(state = true, action) {
+export default function cart(state = [], action) {
+  console.log(state)
+
   switch (action.type) {
-    case 'TOGGLE_CART':
-      return !state;
+    case 'ADD_PRODUCT':
+      return [...state, action.product];
     default:
       return state;
-  }
+    };
 }
+

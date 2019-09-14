@@ -14,36 +14,43 @@ class Cart extends Component {
   };
 
   render() {
-    const { cart } = this.props;
+    const { toggleCart, cart } = this.props;
     return (
-      <CartSide isClosed={cart}>
+      <CartSide isClosed={toggleCart}>
         <Close>
           <FiXCircle onClick={this.handleCart} size="25" color="#5a2d82" />
         </Close>
         <CartList>
-          <li>
-            <img
-              src="https://imgcentauro-a.akamaihd.net/900x900/91189631/camiseta-do-corinthians-basic-tr-masculina-img.jpg"
-              alt="Camiseta Corinthians"
-            />
-            <CartListInfo>
-              <div>
-                <strong>Camisa Nike Corinthians I</strong>
-                <span>g | modelo</span>
-                <span>Quantidade</span>
-              </div>
-              <div>
-                <FiTrash2 />
-                <strong>R$ 229.9</strong>
-              </div>
-            </CartListInfo>
-          </li>
+
+          {cart.map(product => (
+             <li key={product.id}>
+             <img
+               src={product.image}
+               alt="Camiseta Corinthians"
+             />
+             <CartListInfo>
+               <div>
+                 <strong>{product.title}</strong>
+                 <span>g | modelo</span>
+                 <span>Quantidade</span>
+               </div>
+               <div>
+                 <FiTrash2 />
+                 <strong>R$ 229.9</strong>
+               </div>
+             </CartListInfo>
+           </li>
+          ))}
         </CartList>
       </CartSide>
     );
   }
 }
 
-export default connect(state => ({
+const mapStateToProps = state => ({
   cart: state.cart,
-}))(Cart);
+  toggleCart: state.toggleCart
+
+});
+
+export default connect(mapStateToProps)(Cart);
