@@ -64,7 +64,7 @@ class Cart extends Component {
             </CartList>
           )}
         </Scroll>
-        <Total>Total: R$ {total}</Total>
+        <Total>Total:{total}</Total>
         <button type="button">Finalizar compra</button>
       </CartSide>
     );

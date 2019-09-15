@@ -34,6 +34,10 @@ export const CartList = styled.ul`
     background: #fff;
     border-radius: 5px;
 
+    @media (max-width: 768px) {
+      overflow-x: hidden;
+    }
+
     & + li {
       margin-top: 15px;
     }
@@ -108,4 +112,5 @@ export const CartEmpty = styled.div`
 
 export const Scroll = styled(PerfectScrollBar)`
   max-height: calc(100vh - 250px);
+  overflow-x: hidden;
 `;
