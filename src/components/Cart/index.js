@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { FiXCircle, FiTrash2 } from 'react-icons/fi';
+import { formatPrice } from '../../util/formatPrice'
 
 import { connect } from 'react-redux';
 import { CartSide, Close, CartList, CartListInfo, CartEmpty, RemoveButton, Total } from './styles';
@@ -39,7 +40,7 @@ class Cart extends Component {
                         type="number"
                         readOnly
                         value={product.amount}
-                      />{' '}
+                      />
                     </span>
                   </div>
                   <div>
@@ -51,7 +52,7 @@ class Cart extends Component {
                     >
                     <FiTrash2 />
                     </button>
-                    <strong>R$ {product.totalProduct}</strong>
+                    <strong>{product.totalProduct}</strong>
                   </div>
                 </CartListInfo>
               </li>
@@ -68,12 +69,12 @@ class Cart extends Component {
 const mapStateToProps = state => ({
   cart: state.cart.map(product => ({
     ...product,
-    totalProduct: (product.price * product.amount).toFixed(2),
+    totalProduct: formatPrice(product.price * product.amount),
   })),
   toggleCart: state.toggleCart,
-  total: state.cart.reduce((total, product) => {
+  total: formatPrice(state.cart.reduce((total, product) => {
     return total + product.price * product.amount;
-  }, 0),
+  }, 0)),
 });
 
 export default connect(mapStateToProps)(Cart);
