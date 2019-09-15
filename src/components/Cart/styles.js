@@ -87,11 +87,20 @@ export const CartListInfo = styled.div`
   }
 `;
 
-export const Total = styled.strong`
-  font-size: 1.5em;
+export const Total = styled.div`
   text-align: center;
-  display: block;
-  margin: 1em auto;
+  padding: 1em 0;
+
+  strong {
+    font-size: 1.5em;
+    display: block;
+  }
+  span {
+    padding: 1em 0;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #5a5a5a;
+  }
 `;
 
 export const CartEmpty = styled.div`

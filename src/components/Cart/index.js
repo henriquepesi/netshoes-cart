@@ -23,7 +23,7 @@ class Cart extends Component {
   };
 
   render() {
-    const { toggleCart, cart, total, dispatch } = this.props;
+    const { toggleCart, cart, total, dividedPrice, dispatch } = this.props;
     return (
       <CartSide isClosed={toggleCart}>
         <Close>
@@ -64,7 +64,10 @@ class Cart extends Component {
             </CartList>
           )}
         </Scroll>
-        <Total>Total:{total}</Total>
+        <Total>
+          <strong>Total:{total} </strong>
+          <span>Ou em até 10 X {dividedPrice}</span>
+        </Total>
         <button type="button">Finalizar compra</button>
       </CartSide>
     );
@@ -80,6 +83,11 @@ const mapStateToProps = state => ({
   total: formatPrice(
     state.cart.reduce((total, product) => {
       return total + product.price * product.amount;
+    }, 0)
+  ),
+  dividedPrice: formatPrice(
+    state.cart.reduce((total, product) => {
+      return (total + product.price * product.amount) / 10;
     }, 0)
   ),
 });
