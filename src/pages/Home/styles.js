@@ -6,6 +6,9 @@ export const ProductList = styled.ul`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   padding-top: 80px;
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr 1fr;
+  }
   li {
     display: flex;
     align-items: flex-start;

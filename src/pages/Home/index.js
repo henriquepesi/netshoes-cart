@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { formatPrice } from '../../util/formatPrice'
+import { formatPrice } from '../../util/formatPrice';
 import api from '../../services/api';
 
 import { ProductList, Value } from './styles';
@@ -15,8 +15,8 @@ class Home extends Component {
 
     const data = response.data.map(product => ({
       ...product,
-      priceFormatted: formatPrice(product.price)
-    }))
+      priceFormatted: formatPrice(product.price),
+    }));
 
     this.setState({ products: data });
   }
@@ -39,10 +39,10 @@ class Home extends Component {
           <li key={product.id}>
             <img src={product.image} alt={product.title} />
             <strong>{product.title}</strong>
-            <Value price>
-              {product.priceFormatted}
-            </Value>
+
+            <Value price>{product.priceFormatted}</Value>
             <Value>3 x de {(product.price / 3).toFixed(2)}</Value>
+
             <button
               type="button"
               onClick={() => this.handleAddProduct(product)}

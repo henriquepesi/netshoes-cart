@@ -1,9 +1,17 @@
 import React, { Component } from 'react';
 import { FiXCircle, FiTrash2 } from 'react-icons/fi';
-import { formatPrice } from '../../util/formatPrice'
+import { formatPrice } from '../../util/formatPrice';
 
 import { connect } from 'react-redux';
-import { CartSide, Close, CartList, CartListInfo, CartEmpty, RemoveButton, Total } from './styles';
+import {
+  CartSide,
+  Close,
+  CartList,
+  CartListInfo,
+  CartEmpty,
+  Scroll,
+  Total,
+} from './styles';
 
 class Cart extends Component {
   handleCart = () => {
@@ -22,43 +30,40 @@ class Cart extends Component {
           <FiXCircle onClick={this.handleCart} size="25" color="#5a2d82" />
         </Close>
 
-        {!cart.length ? (
-          <CartEmpty>carrinho vazio</CartEmpty>
-        ) : (
-          <CartList>
-            {/* Teste */}
-            {cart.map(product => (
-              <li key={product.id}>
-                <img src={product.image} alt="Camiseta Corinthians" />
-                <CartListInfo>
-                  <div>
-                    <strong>{product.title}</strong>
-                    <span>g | modelo</span>
-                    <span>
-                      Quantidade:
-                      <input
-                        type="number"
-                        readOnly
-                        value={product.amount}
-                      />
-                    </span>
-                  </div>
-                  <div>
-                    <button
-                      type="button"
-                      onClick={() =>
-                        dispatch({ type: 'REMOVE_PRODUCT', id: product.id })
-                      }
-                    >
-                    <FiTrash2 />
-                    </button>
-                    <strong>{product.totalProduct}</strong>
-                  </div>
-                </CartListInfo>
-              </li>
-            ))}
-          </CartList>
-        )}
+        <Scroll>
+          {!cart.length ? (
+            <CartEmpty>carrinho vazio</CartEmpty>
+          ) : (
+            <CartList>
+              {cart.map(product => (
+                <li key={product.id}>
+                  <img src={product.image} alt="Camiseta Corinthians" />
+                  <CartListInfo>
+                    <div>
+                      <strong>{product.title}</strong>
+                      <span> Modelo</span>
+                      <span>
+                        Quantidade:
+                        <input type="number" readOnly value={product.amount} />
+                      </span>
+                    </div>
+                    <div>
+                      <button
+                        type="button"
+                        onClick={() =>
+                          dispatch({ type: 'REMOVE_PRODUCT', id: product.id })
+                        }
+                      >
+                        <FiTrash2 />
+                      </button>
+                      <strong>{product.totalProduct}</strong>
+                    </div>
+                  </CartListInfo>
+                </li>
+              ))}
+            </CartList>
+          )}
+        </Scroll>
         <Total>Total: R$ {total}</Total>
         <button type="button">Finalizar compra</button>
       </CartSide>
@@ -72,9 +77,11 @@ const mapStateToProps = state => ({
     totalProduct: formatPrice(product.price * product.amount),
   })),
   toggleCart: state.toggleCart,
-  total: formatPrice(state.cart.reduce((total, product) => {
-    return total + product.price * product.amount;
-  }, 0)),
+  total: formatPrice(
+    state.cart.reduce((total, product) => {
+      return total + product.price * product.amount;
+    }, 0)
+  ),
 });
 
 export default connect(mapStateToProps)(Cart);

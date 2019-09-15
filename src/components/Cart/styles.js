@@ -1,14 +1,19 @@
 import styled, { css } from 'styled-components';
+import PerfectScrollBar from 'react-perfect-scrollbar';
 
 export const CartSide = styled.div`
   background: #e6cefb;
   position: fixed;
-  height: calc(100vh - 69px);
+  height: calc(100vh - 70px);
   bottom: 0;
   right: -450px;
   width: 450px;
   padding: 10px;
   transition: 0.2s;
+  @media (max-width: 768px) {
+    width: 100vw;
+  }
+
   ${props =>
     props.isClosed &&
     css`
@@ -99,4 +104,8 @@ export const CartEmpty = styled.div`
   font-weight: 500;
   font-size: 1.5em;
   color: #5a2d82;
+`;
+
+export const Scroll = styled(PerfectScrollBar)`
+  max-height: calc(100vh - 250px);
 `;
