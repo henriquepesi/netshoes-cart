@@ -22,17 +22,6 @@ export const ProductList = styled.ul`
       font-size: 1.1rem;
       margin: 10px 0;
     }
-
-    button {
-      background: #ff691e;
-      color: #fff;
-      width: 100%;
-      padding: 8px;
-      border-radius: 5px;
-      font-size: 1rem;
-      font-weight: 600;
-      margin-top: auto;
-    }
   }
 `;
 

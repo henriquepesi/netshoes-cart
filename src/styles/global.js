@@ -25,5 +25,13 @@ export default createGlobalStyle`
   button {
     cursor: pointer;
     border: none;
+    background: #ff691e;
+    color: #fff;
+    width: 100%;
+    padding: 8px;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: 600;
+    margin-top: auto;
   }
 `;

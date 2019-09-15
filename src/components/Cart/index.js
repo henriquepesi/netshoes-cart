@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { FiXCircle, FiTrash2 } from 'react-icons/fi';
 
 import { connect } from 'react-redux';
-import { CartSide, Close, CartList, CartListInfo } from './styles';
+import { CartSide, Close, CartList, CartListInfo, CartEmpty, RemoveButton, Total } from './styles';
 
 class Cart extends Component {
   handleCart = () => {
@@ -14,7 +14,7 @@ class Cart extends Component {
   };
 
   render() {
-    const { toggleCart, cart, dispatch } = this.props;
+    const { toggleCart, cart, total, dispatch } = this.props;
     return (
       <CartSide isClosed={toggleCart}>
         <Close>
@@ -22,7 +22,7 @@ class Cart extends Component {
         </Close>
 
         {!cart.length ? (
-          <p>carrinho vazio</p>
+          <CartEmpty>carrinho vazio</CartEmpty>
         ) : (
           <CartList>
             {/* Teste */}
@@ -49,7 +49,7 @@ class Cart extends Component {
                         dispatch({ type: 'REMOVE_PRODUCT', id: product.id })
                       }
                     >
-                      <FiTrash2 />
+                    <FiTrash2 />
                     </button>
                     <strong>R$ {product.totalProduct}</strong>
                   </div>
@@ -58,6 +58,8 @@ class Cart extends Component {
             ))}
           </CartList>
         )}
+        <Total>Total: R$ {total}</Total>
+        <button type="button">Finalizar compra</button>
       </CartSide>
     );
   }
@@ -69,6 +71,9 @@ const mapStateToProps = state => ({
     totalProduct: (product.price * product.amount).toFixed(2),
   })),
   toggleCart: state.toggleCart,
+  total: state.cart.reduce((total, product) => {
+    return total + product.price * product.amount;
+  }, 0),
 });
 
 export default connect(mapStateToProps)(Cart);

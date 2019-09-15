@@ -15,13 +15,14 @@ class Header extends Component {
   };
 
   render() {
+    const {productAmount} = this.props
     return (
       <Container>
         <div>
           <Logo>
             <img src={logo} alt="Netshoes" />
           </Logo>
-          <Cart>
+          <Cart hasProduct={productAmount}>
             <FiShoppingCart onClick={this.handleCart} color="fff" size="25" />
           </Cart>
         </div>
@@ -30,4 +31,8 @@ class Header extends Component {
   }
 }
 
-export default connect()(Header);
+const  mapStateToProps = state => ({
+  productAmount: state.cart.length
+});
+
+export default connect(mapStateToProps)(Header);
