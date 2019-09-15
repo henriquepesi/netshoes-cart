@@ -41,7 +41,7 @@ class Home extends Component {
             <strong>{product.title}</strong>
 
             <Value price>{product.priceFormatted}</Value>
-            <Value>3 x de {(product.price / 3).toFixed(2)}</Value>
+            <Value>3 x de {formatPrice(product.price / 3)}</Value>
 
             <button
               type="button"
