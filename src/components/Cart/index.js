@@ -41,7 +41,7 @@ class Cart extends Component {
                   <CartListInfo>
                     <div>
                       <strong>{product.title}</strong>
-                      <span> Modelo</span>
+                      <span> {product.style}</span>
                       <span>
                         Quantidade:
                         <input type="number" readOnly value={product.amount} />
