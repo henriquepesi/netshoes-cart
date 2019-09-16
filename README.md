@@ -2,15 +2,9 @@
   Netshoes Cart
 </h1>
 
-<p align="center">
-  <a href="https://netshoes-cart.netlify.com/" target="_blank">
-    <img alt="Netshoes Cart" src="https://i.imgur.com/AbXIuGg.png">
-  </a>
-</p>
-
 ## :information_source: How To Run this project
 
-To clone and run this application, you'll need is:
+To clone and run this application:
 
 ```bash
 # Clone this repository
@@ -25,3 +19,10 @@ $ yarn install
 # Run the app
 $ yarn start
 ```
+
+
+<p align="center">
+  <a href="https://netshoes-cart.netlify.com/" target="_blank">
+    <img alt="Netshoes Cart" src="https://i.imgur.com/AbXIuGg.png">
+  </a>
+</p>
