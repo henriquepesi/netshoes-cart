@@ -1,25 +1,27 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<h1>
+    Netshoes Cart
+</h1>
 
-## Available Scripts
+<p align="center">
+  <a href="https://netshoes-cart.netlify.com/" target="_blank">
+    <img alt="Netshoes Cart" src="https://i.imgur.com/AbXIuGg.png">
+  </a>
+</p>
 
-In the project directory, you can run:
+## :information_source: How To Run this project
 
-### `npm start`
+To clone and run this application, you'll need is:
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+```bash
+# Clone this repository
+$ git clone https://github.com/henriquepesi/netshoes-cart
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+# Go into the repository
+$ cd netshoes-cart
 
-### `npm run build`
+# Install dependencies
+$ yarn install
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-# netshoes-cart
+# Run the app
+$ yarn start
+```
