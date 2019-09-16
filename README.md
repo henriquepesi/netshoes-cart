@@ -1,5 +1,5 @@
-<h1>
-    Netshoes Cart
+<h1 align="center"> 
+  Netshoes Cart
 </h1>
 
 <p align="center">
